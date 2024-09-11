@@ -1,0 +1,44 @@
+package com.mycompany.ejercicio1;
+
+import java.util.Scanner;
+
+public class Ejercicio15 {
+
+    public static void main(String[] args) {
+        // Crear un escáner para leer la entrada del usuario
+        Scanner scanner = new Scanner(System.in);
+
+        // Pedir al usuario que ingrese un número
+        System.out.print("Ingresa un número: ");
+        int numero = scanner.nextInt();
+
+        // Verificar si el número es un número de Armstrong
+        if (esNumeroArmstrong(numero)) {
+            System.out.println(numero + " es un número de Armstrong.");
+        } else {
+            System.out.println(numero + " no es un número de Armstrong.");
+        }
+    }
+
+    // Función para determinar si un número es un número de Armstrong
+    public static boolean esNumeroArmstrong(int num) {
+        int suma = 0;
+        int numeroOriginal = num;
+        int numeroDeDigitos = contarDigitos(num);
+
+        // Calcular la suma de los dígitos elevados a la potencia del número de dígitos
+        while (num != 0) {
+            int digito = num % 10;
+            suma += Math.pow(digito, numeroDeDigitos);
+            num /= 10;
+        }
+
+        // Comparar la suma con el número original
+        return suma == numeroOriginal;
+    }
+
+    // Función para contar la cantidad de dígitos de un número
+    public static int contarDigitos(int num) {
+        return String.valueOf(num).length();
+    }
+}
